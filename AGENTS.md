@@ -60,3 +60,47 @@ Important: When modifying core agent behavior such as instructions, tool descrip
 You can make use of the LiveKit CLI (`lk`) for various tasks, with user approval. Installation instructions are available at https://docs.livekit.io/home/cli if needed.
 
 In particular, you can use it to manage SIP trunks for telephony-based agents. Refer to `lk sip --help` for more information.
+
+
+# Rozetka AI Sales Closer
+
+## PROJECT SCOPE
+Autonomous Sales Agent for Rozetka. Handles outbound calls via LiveKit SIP, performs upsells using Gemini 2.5 Flash Native Audio (realtime voice model), and sends links via Telegram/Viber. Includes a React dashboard for human handoff and a "Mistake Box" for prompt self-correction using Gemini 2.0 Flash.
+
+## TECH STACK
+- **Agent Language:** Python 3.11+ (LiveKit Agents SDK)
+- **Package Manager:** uv
+- **Voice Model:** Gemini 2.5 Flash Native Audio (`gemini-2.5-flash-native-audio-preview-12-2025`) via Gemini Live API
+- **Meta-Prompting:** Gemini 2.0 Flash (text model for "Mistake Box")
+- **Frontend:** React/TypeScript (based on https://github.com/livekit-examples/agent-starter-react)
+- **Database:** Firebase (Firestore for logs/prompts, Storage for recordings)
+- **Messaging:** Cloud Run (Telethon/MTProto)
+
+## DEVELOPMENT COMMANDS
+- **Install deps:** `uv sync`
+- **Run Agent (dev):** `uv run python src/agent.py dev`
+- **Run Agent (console):** `uv run python src/agent.py console`
+- **Lint:** `uv run ruff check`
+- **Format:** `uv run ruff format`
+- **Test:** `uv run pytest`
+- **Dev UI:** `npm run dev --prefix ui-dashboard`
+
+## CRITICAL RULES FOR RALPH/CLAUDE CODE
+1. **MCP USAGE:** You MUST use the `livekit-docs` MCP tool before implementing any LiveKit SDK features. Verify Python syntax for AgentSession, Agent, and function tools.
+2. **GOOGLE AI:** Use `livekit.plugins.google` with `google.realtime.RealtimeModel` for voice. Use `GOOGLE_API_KEY` env var.
+3. **TYPE SAFETY:** Use Python type hints throughout. Run `uv run ruff check` frequently.
+4. **TOOL CALLING:** All agent tools (send_link, transfer_to_human) must use the `@function_tool` decorator on Agent class methods.
+5. **ERROR HANDLING:** Calls to external APIs (Telegram Webhook, Firebase) must be wrapped in try/except blocks with logging.
+
+## ARCHITECTURAL PATTERNS
+- **Handoff:** When `transfer_to_human` is called, update Firestore `calls/{id}/status` to 'handoff' and trigger a LiveKit Data Packet to the UI.
+- **Transcripts:** Use room event handlers to stream transcription data to Firebase in real-time.
+- **Recordings:** Use `EgressClient` to start a RoomComposite recording when a call is answered.
+- **Prompt Logic:** Always load the system prompt from `config/prompts.json` or Firebase at the start of a `JobContext` so the "Mistake Box" updates take effect immediately.
+
+## PROJECT STRUCTURE
+- `/src/agent.py`: Main LiveKit Agent entry point.
+- `/src/tools/`: Individual tool definitions (Telegram, Viber).
+- `/src/services/`: Firebase and Gemini 3.0 Meta-Prompting logic.
+- `/ui-dashboard/`: React/TypeScript frontend (agent-starter-react).
+- `/tests/`: pytest unit tests for tools.
