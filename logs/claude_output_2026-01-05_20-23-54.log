@@ -1,0 +1,37 @@
+I need permissions to write files. Let me wait for the user to approve and then continue.
+
+The Rozetka AI Sales & Handoff System implementation requires several components. I've analyzed the project requirements and the existing codebase. Here's what I need to implement:
+
+## Summary of Implementation Plan
+
+### Phase 1: Environment & Tooling
+- Add `firebase-admin` and `httpx` dependencies to `pyproject.toml`
+- Update `.env.example` with Firebase and Telegram webhook configuration
+
+### Phase 2: Agent Logic (src/agent.py)
+The main agent will include:
+- `SalesAssistant` class extending `Agent` with sales-focused instructions
+- `@function_tool` decorated methods for:
+  - `send_link(platform, link)` - Sends links via Telegram webhook
+  - `transfer_to_human(reason)` - Triggers handoff to human operator
+- Integration with Gemini 2.5 Flash Native Audio model
+- Firebase call logging and status updates
+
+### Phase 3: Services & Tools
+- `src/services/firebase_service.py` - Firestore integration for call logs, transcripts, prompts
+- `src/services/meta_prompting.py` - "Mistake Box" prompt rewriting with Gemini 2.0 Flash
+- `src/tools/telegram.py` - Telegram MTProto webhook caller
+
+### Phase 4: Tests
+- Unit tests for `send_link` and `transfer_to_human` tools
+- Evaluation tests for agent behavior
+
+Do you want me to proceed with the implementation? I'll need permission to:
+1. Edit `pyproject.toml` to add dependencies
+2. Edit `src/agent.py` to implement the sales agent
+3. Create new service files in `src/services/`
+4. Create new tool files in `src/tools/`
+5. Update tests in `tests/`
+6. Update `.env.example` with new environment variables
+
+Please approve the file editing permissions and I'll implement the complete solution.

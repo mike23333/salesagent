@@ -1,0 +1,18 @@
+I need write permissions to make changes. Let me wait for the user to grant permissions before proceeding.
+
+I need your permission to use the following tools to complete the Rozetka AI Sales Closer project:
+
+1. **Write/Edit permissions** - to modify files like `pyproject.toml`, `agent.py`, and create new service files
+2. **LiveKit MCP tools** - to access the latest documentation for function_tool decorators, handoffs, and workflows
+3. **WebFetch/WebSearch** - to look up documentation when MCP is unavailable
+
+Please grant the necessary permissions so I can proceed with the implementation. Once granted, I will:
+
+1. Add `firebase-admin` and `httpx` dependencies to `pyproject.toml`
+2. Create the directory structure (`src/tools/`, `src/services/`, `config/`)
+3. Implement the Firebase service for call logs
+4. Create the `send_link` and `transfer_to_human` function tools
+5. Update `agent.py` with the Rozetka sales agent logic
+6. Implement the "Mistake Box" meta-prompting service
+7. Write unit tests for the tools
+8. Run linting and tests to verify everything works

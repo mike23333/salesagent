@@ -1,0 +1,10 @@
+I see that permissions need to be granted for file operations. Let me wait for you to grant write permissions. Once granted, I'll proceed with:
+
+1. **Update pyproject.toml** - Add firebase-admin and httpx dependencies
+2. **Create directory structure** - `src/services/`, `src/tools/`, `config/`
+3. **Implement Firebase service** - For call logs, transcripts, and prompt storage
+4. **Create function tools** - `send_link` and `transfer_to_human`
+5. **Update agent.py** - Rozetka sales agent with Gemini 2.5 Flash Native Audio
+6. **Add tests** - Unit tests for the function tools
+
+Please grant the file write permissions when prompted, and I'll continue with the implementation.

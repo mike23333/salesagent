@@ -1,0 +1,24 @@
+The commands require approval. Let me outline the implementation plan and wait for approval before proceeding.
+
+This is a significant implementation task. The project requires:
+
+1. **Adding dependencies** (firebase-admin, httpx) via `uv add`
+2. **Creating directories** (src/tools/, src/services/, config/)
+3. **Implementing the Rozetka Sales Agent** with function tools for `send_link` and `transfer_to_human`
+4. **Firebase integration** for call logs, transcripts, and handoff status
+5. **Tests** for the function tools
+
+Before I can proceed, I need approval for:
+- Running `mkdir` to create directories
+- Running `uv add` to add dependencies
+
+Once approved, I'll implement:
+- `src/tools/__init__.py` - Tool exports
+- `src/services/__init__.py` - Service exports  
+- `src/services/firebase_service.py` - Firebase integration
+- `src/services/prompt_service.py` - Prompt loading from config/Firebase
+- `config/prompts.json` - Default system prompts
+- Updated `src/agent.py` - RozetkaSalesAgent with function tools
+- Updated `tests/test_agent.py` - Tests for tools
+
+Would you like me to proceed with the implementation once you approve the bash commands? Or would you prefer to see the implementation plan in more detail first?

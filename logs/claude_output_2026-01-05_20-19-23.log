@@ -1,0 +1,15 @@
+I need permission to edit files. The project requires:
+
+1. **Edit permission** - to modify `pyproject.toml`, `src/agent.py`, create new files
+2. **LiveKit MCP tools permission** - to access documentation for correct SDK patterns
+
+Could you please grant permissions for:
+- File editing (Edit/Write tools)
+- LiveKit MCP documentation tools
+
+Once granted, I'll proceed with implementing the Rozetka AI Sales system including:
+- Firebase integration service
+- `send_link` and `transfer_to_human` function tools  
+- Updated sales agent with Rozetka-specific prompt
+- Mistake Box meta-prompting service
+- Comprehensive tests

@@ -1,0 +1,16 @@
+I need permission to make edits. Let me ask you to grant the necessary permissions to proceed:
+
+The project requires adding dependencies and creating/modifying files. Once you grant me edit permissions, I'll proceed with:
+
+1. Adding `firebase-admin` and `httpx` to pyproject.toml
+2. Creating the directory structure (`src/tools/`, `src/services/`, `config/`)
+3. Implementing the Firebase service
+4. Implementing function tools (`send_link`, `transfer_to_human`)
+5. Updating the agent with Rozetka-specific instructions
+6. Creating tests
+
+Could you please grant me permission to edit files and run commands? I'll need to:
+- Edit `pyproject.toml` to add dependencies
+- Create new directories and files
+- Run `uv sync` to install dependencies
+- Run `uv run ruff check` and `uv run pytest` for verification
